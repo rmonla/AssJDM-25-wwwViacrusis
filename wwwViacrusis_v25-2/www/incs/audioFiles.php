@@ -1,0 +1,153 @@
+<?php
+// Array de archivos de audio (debería centralizarse si es muy grande)
+$audioFiles = [
+['id'           => 'PCVBY0101',
+ 'filename'     => 'PCVBY0101_v1.mp3',
+ 'short_url'    => 'https://bit.ly/3P8XeY9',
+ 'display_name' => 'RELATOR - En el cielo y la creación',
+ 'order'        => '0101'
+],
+['id'           => 'PCVBY0102',
+ 'filename'     => 'PCVBY0102_v3.mp3',
+ 'short_url'    => 'https://bit.ly/406U9yn',
+ 'display_name' => 'DIOS - La misión de Gabriel',
+ 'order'        => '0102'
+],
+['id'           => 'PCVBY0103',
+ 'filename'     => 'PCVBY0103_v3.mp3',
+ 'short_url'    => 'https://bit.ly/3ZRieYo',
+ 'display_name' => 'MARÍA - La anunciación de Gabriel',
+ 'order'        => '0103'
+],
+['id'           => 'PCVBY0104',
+ 'filename'     => 'PCVBY0104_v1.mp3',
+ 'short_url'    => 'https://bit.ly/3P5H561',
+ 'display_name' => 'RELATOR - La virgen María ha sido informada de su misión',
+ 'order'        => '0104'
+],
+['id'           => 'PCVBY0105',
+ 'filename'     => 'PCVBY0105_v4.mp3',
+ 'short_url'    => 'https://bit.ly/4iLrV3n',
+ 'display_name' => 'ISABEL - La visitación de María',
+ 'order'        => '0105'
+],
+['id'           => 'PCVBY0106',
+ 'filename'     => 'PCVBY0106_v1.mp3',
+ 'short_url'    => 'https://bit.ly/49RUYxW',
+ 'display_name' => 'RELATOR - Y así alabando la obra de Dios',
+ 'order'        => '0106'
+],
+['id'           => 'PCVBY0107',
+ 'filename'     => 'PCVBY0107_v1.mp3',
+ 'short_url'    => 'https://bit.ly/3VRT0rX',
+ 'display_name' => 'RELATOR - La Virgen María estaba comprometida con José',
+ 'order'        => '0107'
+],
+['id'           => 'PCVBY0108',
+ 'filename'     => 'PCVBY0108_v4.mp3',
+ 'short_url'    => 'https://bit.ly/3BvDrzf',
+ 'display_name' => 'JOSÉ - La revelación de Gabriel',
+ 'order'        => '0108'
+],
+['id'           => 'PCVBY0109',
+ 'filename'     => 'PCVBY0109_v2.mp3',
+ 'short_url'    => 'https://bit.ly/4ft6wJj',
+ 'display_name' => 'RELATOR - José era hombre de fe y obediencia',
+ 'order'        => '0109'
+],
+['id'           => 'PCVBY0110',
+ 'filename'     => 'PCVBY0110_v5.mp3',
+ 'short_url'    => 'https://bit.ly/41LjU8k',
+ 'display_name' => 'NACIMIENTO - La peregrinación de María y José',
+ 'order'        => '0110'
+],
+['id'           => 'PCVBY0201',
+ 'filename'     => 'PCVBY0201_v4.mp3',
+ 'short_url'    => 'https://bit.ly/49RVhsA',
+ 'display_name' => 'NACIMIENTO - El nacimiento de Jesús',
+ 'order'        => '0201'
+],
+['id'           => 'PCVBY0202',
+ 'filename'     => 'PCVBY0202_v1.mp3',
+ 'short_url'    => 'https://bit.ly/3ZPuVTD',
+ 'display_name' => 'RELATOR - El grito del misterio de la Navidad',
+ 'order'        => '0202'
+],
+['id'           => 'PCVBY0203',
+ 'filename'     => 'PCVBY0203_v4.mp3',
+ 'short_url'    => 'https://bit.ly/4gGVLEV',
+ 'display_name' => 'LOS ANGELES - La peregrinación',
+ 'order'        => '0203'
+],
+['id'           => 'PCVBY0301',
+ 'filename'     => 'PCVBY0301_v1.mp3',
+ 'short_url'    => 'https://bit.ly/406UAZx',
+ 'display_name' => 'RELATOR - El llanto de Jesús llenó el pesebre',
+ 'order'        => '0301'
+],
+['id'           => 'PCVBY0302',
+ 'filename'     => 'PCVBY0302_v5.mp3',
+ 'short_url'    => 'https://bit.ly/4iPl4Wt',
+ 'display_name' => 'LOS PASTORES - La revelación de Gabriel a los pastores',
+ 'order'        => '0302'
+],
+['id'           => 'PCVBY0303',
+ 'filename'     => 'PCVBY0303_v4.mp3',
+ 'short_url'    => 'https://bit.ly/3PajHnY',
+ 'display_name' => 'LOS PASTORES - La peregrinación (Chaya Riojana)',
+ 'order'        => '0303'
+],
+['id'           => 'PCVBY0401',
+ 'filename'     => 'PCVBY0401_v4.mp3',
+ 'short_url'    => 'https://bit.ly/4fv3kNh',
+ 'display_name' => 'LOS REYES - El descubrimiento de la estrella',
+ 'order'        => '0401'
+],
+['id'           => 'PCVBY0402',
+ 'filename'     => 'PCVBY0402_v3.mp3',
+ 'short_url'    => 'https://bit.ly/4gKiuiO',
+ 'display_name' => 'LOS REYES - La peregrinación (Los Reyes Magos Takirari)',
+ 'order'        => '0402'
+],
+['id'           => 'PCVBY0403',
+ 'filename'     => 'PCVBY0403_v5.mp3',
+ 'short_url'    => 'https://bit.ly/405pMbh',
+ 'display_name' => 'LOS REYES - El rey prometido',
+ 'order'        => '0403'
+],
+['id'           => 'PCVBY0404',
+ 'filename'     => 'PCVBY0203_v4.mp3',
+ 'short_url'    => 'https://bit.ly/4gGVLEV',
+ 'display_name' => 'LOS ANGELES - La peregrinación',
+ 'order'        => '0404'
+],
+['id'           => 'PCVBY1001',
+ 'filename'     => 'PCVBY1001_v1.mp3',
+ 'short_url'    => 'https://bit.ly/4go8Y5l',
+ 'display_name' => 'CONTINUO - 1ª Parte',
+ 'order'        => '1001'
+],
+['id'           => 'PCVBY1002',
+ 'filename'     => 'PCVBY1002_v2.mp3',
+ 'short_url'    => 'https://bit.ly/4fqHOcJ',
+ 'display_name' => 'CONTINUO - 2ª Parte',
+ 'order'        => '1002'
+],
+['id'           => 'PCVBY1003',
+ 'filename'     => 'PCVBY1003_v3.mp3',
+ 'short_url'    => 'https://bit.ly/3VQzY5g',
+ 'display_name' => 'CONTINUO - 3ª Parte',
+ 'order'        => '1003'
+],
+['id'           => 'PCVBY1004',
+ 'filename'     => 'PCVBY1004_v2.mp3',
+ 'short_url'    => 'https://bit.ly/49PHlzo',
+ 'display_name' => 'CONTINUO - 4ª Parte',
+ 'order'        => '1004'
+],
+['id'           => 'PCVBY1005',
+ 'filename'     => 'PCVBY1005_v2.mp3',
+ 'short_url'    => 'https://bit.ly/41J1XHx',
+ 'display_name' => 'CONTINUO - 5ª Parte',
+ 'order'        => '1005']
+];
