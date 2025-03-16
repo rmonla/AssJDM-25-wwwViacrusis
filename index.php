@@ -1,16 +1,16 @@
 <?php
 
-// http://rmnot:32768/?key=PCVBY2024
+// http://rmnot:32768/?key=VCV2025
 
-// https://dns.frlr.utn.edu.ar/wwwVCV/?key=PCVBY2024
+// https://dns.frlr.utn.edu.ar/wwwVCV/?key=VCV2025
 
 
 require 'incs/functions.php';
 require 'incs/audioFiles.php'; // Importamos el array centralizado
 require 'incs/versionLogs.php';
 
-// Verificar si se pasa el parámetro 'key' con el valor 'PCVBY2024'
-if (!isset($_GET['key']) || $_GET['key'] !== 'PCVBY2024') {
+// Verificar si se pasa el parámetro 'key' con el valor 'VCV2025'
+if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
     // Redirigir a otra página (por ejemplo, 'error.php')
     header('Location: error.php');
     exit(); // Detener la ejecución para evitar que se cargue el contenido de esta página
