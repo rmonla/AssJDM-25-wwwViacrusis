@@ -1,12 +1,18 @@
 <?php
 $versionLogs = [
+    '25.2' => [
+        'date' => '2025-03-16',
+        'changes' => [
+            'Actualiza valores de Titulos a Viacrusus 2025.',
+            ],
+        ],
     '25.1' => [
         'date' => '2025-03-10',
         'changes' => [
             'Se genera y actualiza a la nueva notacion de versionado del 5.6 a 25.1.',
             ],
         ],
-    '5.6' => [
+        '5.6' => [
         'date' => '2025-03-25',
         'changes' => [
             'www/: Se re organiza carpetas para separar la configuración docker con la página.',

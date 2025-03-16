@@ -2,6 +2,9 @@
 
 // http://rmnot:32768/?key=PCVBY2024
 
+// https://dns.frlr.utn.edu.ar/wwwVCV/?key=PCVBY2024
+
+
 require 'incs/functions.php';
 require 'incs/audioFiles.php'; // Importamos el array centralizado
 require 'incs/versionLogs.php';
