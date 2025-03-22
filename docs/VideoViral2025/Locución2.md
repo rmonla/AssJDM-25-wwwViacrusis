@@ -2,6 +2,10 @@
 
 La pasión de Cristo: El sacrificio que nos une
 
+
+Via Crusis viviente del Barrio Yacampis...
+
+
 En el corazón de nuestro querido barrio Yacampis...
 hay una historia que nos une.
 
@@ -22,7 +26,7 @@ Podés participar como actor o actriz...
 colaborar en la organización...
 o simplemente acompañar con tu presencia... y tu oración.
 
-La representación se realizará durante la Semana Santa,
+La representación se realizará durante los primeros días Semana Santa,
 con ensayos previos y el apoyo de toda la comunidad.
 
 Porque la pasión de Cristo es un mensaje universal...
@@ -31,7 +35,7 @@ que nos une como familia.
 Este año, te invitamos a caminar juntos.
 A vivir el Vía Crucis... como nunca antes.
 
-Para obtener más información, visita el enlace que aparece en este video, o comunícate al celular 0 3 80 4, 13, 86, 25. También puedes acercarte personalmente a 'El Quincho de Laura', ubicado frente a la Plazoleta del Reloj.
+Para obtener más información, visita el enlace que aparece en este video, o comunícate al celular 0 3 80 4, 13, 86, 25. También puedes acercarte personalmente a 'El Quincho de Monla', ubicado frente a la Plazoleta del Reloj.
 
 ¡Te esperamos!
 
