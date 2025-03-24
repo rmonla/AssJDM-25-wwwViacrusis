@@ -1,18 +1,28 @@
 <?php
 $versionLogs = [
-    '25.2' => [
-        'date' => '2025-03-16',
+    '25.3' => [
+        'date' => '2025-03-24',
         'changes' => [
-            'Actualiza valores de Titulos a Viacrusus 2025.',
+            'Renombra archivos de audio 1ra parte a la forma XXXv25-X_...',
+            'Actualiza Ultima Cena y agrega Lavado de pies.',
+            'Genera Video Viral 2025',
+            'Upload Todo Unido 1º y 3º parte',
+            'Actualiza nueva key.',
             ],
         ],
+    '25.2' => [
+            'date' => '2025-03-16',
+            'changes' => [
+                'Actualiza valores de Titulos a Viacrusus 2025.',
+                ],
+            ],
     '25.1' => [
         'date' => '2025-03-10',
         'changes' => [
             'Se genera y actualiza a la nueva notacion de versionado del 5.6 a 25.1.',
             ],
         ],
-        '5.6' => [
+    '5.6' => [
         'date' => '2025-03-25',
         'changes' => [
             'www/: Se re organiza carpetas para separar la configuración docker con la página.',
