@@ -1,5 +1,15 @@
 <?php
 $versionLogs = [
+    '25.4' => [
+        'date' => '2025-03-24',
+        'changes' => [
+            'Modifica La Negacion, agrega música al inicio.',
+            'Modifica La Entrega, agrega música al final.',
+            'Modifica Última Cena, agrega Aguas+Monedas-tiempos.',
+            'Agrega en tools el script para renombrar los archivos usando base de datos.',
+            ],
+        ],
+
     '25.3' => [
         'date' => '2025-03-24',
         'changes' => [
@@ -11,11 +21,11 @@ $versionLogs = [
             ],
         ],
     '25.2' => [
-            'date' => '2025-03-16',
-            'changes' => [
-                'Actualiza valores de Titulos a Viacrusus 2025.',
-                ],
+        'date' => '2025-03-16',
+        'changes' => [
+            'Actualiza valores de Titulos a Viacrusus 2025.',
             ],
+        ],
     '25.1' => [
         'date' => '2025-03-10',
         'changes' => [

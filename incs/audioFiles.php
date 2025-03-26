@@ -12,9 +12,9 @@ $audioFiles = [
     'id' => '102v25-1', 'order' => '0103', 'short_url' => '',
 ],
 [
-    'filename' => '103v25-7_La_Última_Cena_Adeje16+Aguas+Monedas_.mp3',
+    'filename' => '103v25-7_La_Última_Cena_Adeje16+Aguas+Monedas.mp3',
     'display_name' => '103 - La Última Cena',
-    'id' => '103v25-7', 'order' => '0104', 'short_url' => '',
+    'id' => '103v25-8', 'order' => '0104', 'short_url' => '',
 ],
 [
     'filename' => '104v25-1_La_oración_en_el_Monte_de_los_Olivos.mp3',
@@ -22,14 +22,14 @@ $audioFiles = [
     'id' => '104v25-1', 'order' => '0105', 'short_url' => '',
 ],
 [
-    'filename' => '105v25-1_La_Entrega.mp3',
+    'filename' => '105v25-3_La_Entrega+MúsicaFinal.mp3',
     'display_name' => '105 - La Entrega',
-    'id' => '105v25-1', 'order' => '0106', 'short_url' => '',
+    'id' => '105v25-3', 'order' => '0106', 'short_url' => '',
 ],
 [
-    'filename' => '106v25-1_Las_negaciones_de_Pedro.mp3',
+    'filename' => '106v25-3_Las_negaciones_de_Pedro+MusicaAlInicio.mp3',
     'display_name' => '106 - Las negaciones de Pedro',
-    'id' => '106v25-1', 'order' => '0107', 'short_url' => '',
+    'id' => '106v25-3', 'order' => '0107', 'short_url' => '',
 ],
 [
     'filename' => '107v25-1_El_juicio_en_el_Sanedrín.mp3',
