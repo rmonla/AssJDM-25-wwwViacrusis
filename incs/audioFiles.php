@@ -137,12 +137,12 @@ $audioFiles = [
     'id' => '309v25-1', 'order' => '0309', 'short_url' => '',
 ],
 [
-    'filename' => '199v25-1_1ºP_Todo_UNIDO.mp3',
+    'filename' => 'x199v25-1_1ºP_Todo_UNIDO.mp3',
     'display_name' => '199 - Todo UNIDO',
     'id' => '199v25-1', 'order' => '0199', 'short_url' => '',
 ],
 [
-    'filename' => '300v25-1_3ºP_Todo_UNIDO.mp3',
+    'filename' => 'x300v25-1_3ºP_Todo_UNIDO.mp3',
     'display_name' => '300 - Todo UNIDO',
     'id' => '300v25-1', 'order' => '0300', 'short_url' => '',
 ],
