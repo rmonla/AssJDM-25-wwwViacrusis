@@ -20,7 +20,10 @@ if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
 
 // Definir variables globales
 $baseURL = getBaseURL(); // Cargar automáticamente la URL base
-include 'incs/header.php'; // Incluir cabecera
+include 'incs/header.php';
+// include 'incs/header2.php'; // Incluir cabecera2
+// htmlHEDER();
+
 ?>
 <main class="main-content">
     <section class="playlist">
