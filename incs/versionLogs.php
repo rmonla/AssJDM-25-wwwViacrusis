@@ -1,5 +1,27 @@
 <?php
 $versionLogs = [
+    '25.5' => [
+        'date' => '2025-03-30', // Actualizar con fecha de hoy
+        'changes' => [
+            'Rediseño completo del reproductor de audio',
+            'Implementación de navegación inferior unificada (Volver/Anterior/Siguiente)',
+            'Mejoras en el sistema responsive para móviles',
+            'Nuevos efectos visuales y microinteracciones:',
+            '   - Efecto "onda" en botones al hacer hover',
+            '   - Animación pulsante para icono de WhatsApp',
+            '   - Feedback visual al completar reproducción',
+            '   - Transición suave al cambiar entre audios',
+            'Rediseño del header con título simplificado',
+            'Reubicación de la versión al footer',
+            'Control de reproducción auto-ajustable al 100% del ancho',
+            'Compatibilidad con modo oscuro del sistema',
+            'Optimización de rendimiento para animaciones CSS',
+            'Corrección del sistema de range requests para navegación en pistas',
+            'Mejoras en la accesibilidad táctil para móviles',
+            'Integración de will-change para aceleración hardware',
+            'Correcciones específicas para navegadores (Firefox, Safari)'
+        ]
+    ],
     '25.4' => [
         'date' => '2025-03-24',
         'changes' => [

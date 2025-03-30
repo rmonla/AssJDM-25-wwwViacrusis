@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var audio = document.getElementById('audioPlayer');
     var autoplayMessage = document.getElementById('autoplayMessage');
     
-    // Intentar reproducción automática
     var playPromise = audio.play();
     
     if (playPromise !== undefined) {
@@ -69,17 +68,19 @@ document.addEventListener('DOMContentLoaded', function() {
             autoplayMessage.style.display = 'none';
         })
         .catch(error => {
-            // Autoplay fue bloqueado
             autoplayMessage.style.display = 'block';
             audio.controls = true;
         });
     }
     
-    // Manejar cambio automático al siguiente audio al terminar
     audio.addEventListener('ended', function() {
-        <?php if ($nextAudio): ?>
-            window.location.href = 'play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>';
-        <?php endif; ?>
+        document.querySelector('.audio-player-container').classList.add('ended');
+        setTimeout(() => {
+            document.querySelector('.audio-player-container').classList.remove('ended');
+            <?php if ($nextAudio): ?>
+                window.location.href = 'play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>';
+            <?php endif; ?>
+        }, 1500);
     });
 });
 </script>

@@ -1,44 +1,62 @@
-/* Estilos base */
+/* ===== ESTILOS BASE ===== */
 body {
     font-family: 'Georgia', serif;
     margin: 0;
+    padding: 0;
     background: linear-gradient(to bottom, #fdf7e3, #e9d8b7);
     color: #4a3e31;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Header */
+/* ===== HEADER COMPACTO ===== */
 .header {
     background-color: #806d5a;
-    padding: 20px;
+    padding: 12px 15px;
     color: #fff;
     text-shadow: 1px 1px 4px #000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 1.8em;
+    font-size: 1.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Estructura principal */
-.main-content {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Lista de reproducción */
+/* ===== LISTA DE REPRODUCCIÓN ===== */
 .playlist {
     background-color: #f9f4ef;
     border: 2px solid #806d5a;
     border-radius: 8px;
-    padding: 20px;
-    margin: 20px auto;
+    padding: 15px;
+    margin: 10px auto;
     width: 90%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
-/* Elementos de la lista */
+#song-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
 .song-item {
     padding: 12px 15px;
     border-bottom: 1px solid #ddd;
@@ -47,11 +65,18 @@ body {
     align-items: center;
     transition: all 0.3s ease;
     background-color: #f9f4ef;
+    box-sizing: border-box;
 }
 
 .song-item:hover {
     background-color: #f0e6d2;
     transform: translateX(5px);
+}
+
+.song-item.active {
+    background-color: #e0d0a7;
+    transform: translateX(8px);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
 .song-link {
@@ -66,7 +91,6 @@ body {
     text-decoration: underline;
 }
 
-/* Icono WhatsApp */
 .icon-whatsapp {
     width: 24px;
     height: 24px;
@@ -78,64 +102,42 @@ body {
     transform: scale(1.2);
 }
 
-/* Reproductor de audio */
+/* ===== REPRODUCTOR ===== */
 .audio-player-container {
-    width: calc(100% - 4px);
-    margin: 20px 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 15px auto;
     padding: 0;
-    background-color: #f9f4ef;
-    border: 2px solid #806d5a;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 audio {
     width: 100%;
+    min-width: 100%;
     height: 50px;
-    background: transparent;
-}
-
-/* Controles del reproductor */
-audio::-webkit-media-controls-panel {
-    width: 100%;
     background-color: #f9f4ef;
     border-radius: 8px;
+    box-sizing: border-box;
 }
 
-audio::-moz-range-track {
+/* ===== BOTONES ===== */
+.audio-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 15px;
+    flex-shrink: 0;
     width: 100%;
 }
 
-/* Mensaje de autoplay */
-.autoplay-message {
-    display: none;
-    background: #fdf7e3;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    color: #4a3e31;
-    border: 1px solid #e9d8b7;
-}
-
-/* Navegación de audio (BOTONES INFERIORES) */
-.audio-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 25px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.navigation-group {
-    display: flex;
-    gap: 15px;
-}
-
-/* Estilos para todos los botones */
 .nav-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding: 8px 15px;
     font-size: 14px;
     color: #4a3e31;
@@ -144,63 +146,50 @@ audio::-moz-range-track {
     border-radius: 20px;
     text-decoration: none;
     transition: all 0.3s ease;
+    width: 90%;
+    max-width: 250px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
 
 .nav-button:hover {
     background-color: #f9f4ef;
     color: #806d5a;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
-.nav-button:active {
-    background-color: #fdf7e3;
-    transform: translateY(1px);
-}
-
-.button-icon {
-    margin: 0 5px;
-    font-weight: bold;
-}
-
-/* Footer */
-.footer {
-    margin-top: 30px;
-    padding: 10px;
-    background-color: #806d5a;
-    color: #fff;
-    font-size: 14px;
-    text-align: center;
-}
-
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    /* Ajustes generales */
     .playlist {
         width: 95%;
-        padding: 15px;
     }
-    
-    .header h1 {
-        font-size: 1.4em;
-    }
-    
-    audio {
-        height: 40px;
-    }
-    
-    /* Navegación en móviles */
-    .audio-navigation {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .navigation-group {
-        width: 100%;
-        justify-content: space-between;
-    }
-    
     .nav-button {
-        flex-grow: 1;
-        text-align: center;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .playlist {
+        width: 100%;
+        padding: 10px;
+    }
+    .nav-button {
+        width: 100%;
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(to bottom, #3a3229, #2a241e);
+        color: #f0e6d2;
+    }
+    .playlist,
+    audio::-webkit-media-controls-panel {
+        background-color: #2a241e;
+    }
+    .song-link {
+        color: #f0e6d2;
     }
 }
