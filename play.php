@@ -29,15 +29,11 @@ include 'incs/header.php';
         <h2 class="audio-title"><?= htmlspecialchars($audio['display_name']) ?></h2>
         
         <div class="audio-player-container">
-            <audio id="audioPlayer" controls>
+            <audio id="audioPlayer" controls controlsList="nodownload">
                 <source src="serve.php?file=<?= urlencode($audio['filename']) ?>" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
             </audio>
-            <div id="autoplayMessage" class="autoplay-message">
-                <p>La reproducción automática está bloqueada. Por favor haz clic en el botón de play.</p>
-            </div>
-        </div>
-        
+        </div>        
         <div class="audio-navigation">
             <?php if ($prevAudio): ?>
                 <a href="play.php?id=<?= htmlspecialchars($prevAudio['id']) ?>" class="nav-button prev-button">
