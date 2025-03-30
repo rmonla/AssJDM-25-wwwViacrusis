@@ -20,32 +20,38 @@ include 'incs/header.php';
 ?>
 <main class="main-content">
     <section class="playlist">
-        <div class="back-button-container">
-            <a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">
-                <span class="button-icon">←</span> Volver
-            </a>
-        </div>
-        
         <h2 class="audio-title"><?= htmlspecialchars($audio['display_name']) ?></h2>
         
         <div class="audio-player-container">
-            <audio id="audioPlayer" controls controlsList="nodownload">
+            <audio id="audioPlayer" controls>
                 <source src="serve.php?file=<?= urlencode($audio['filename']) ?>" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
             </audio>
-        </div>        
+            <div id="autoplayMessage" class="autoplay-message">
+                <p>La reproducción automática está bloqueada. Por favor haz clic en el botón de play.</p>
+            </div>
+        </div>
+        
         <div class="audio-navigation">
-            <?php if ($prevAudio): ?>
-                <a href="play.php?id=<?= htmlspecialchars($prevAudio['id']) ?>" class="nav-button prev-button">
-                    <span class="button-icon">⟵</span> Anterior
+            <div class="navigation-group">
+                <a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">
+                    <span class="button-icon">←</span> Volver
                 </a>
-            <?php endif; ?>
+            </div>
             
-            <?php if ($nextAudio): ?>
-                <a href="play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>" class="nav-button next-button">
-                    Siguiente <span class="button-icon">⟶</span>
-                </a>
-            <?php endif; ?>
+            <div class="navigation-group">
+                <?php if ($prevAudio): ?>
+                    <a href="play.php?id=<?= htmlspecialchars($prevAudio['id']) ?>" class="nav-button prev-button">
+                        <span class="button-icon">⟵</span> Anterior
+                    </a>
+                <?php endif; ?>
+                
+                <?php if ($nextAudio): ?>
+                    <a href="play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>" class="nav-button next-button">
+                        Siguiente <span class="button-icon">⟶</span>
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
     </section>
 </main>

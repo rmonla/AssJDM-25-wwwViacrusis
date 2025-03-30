@@ -15,8 +15,9 @@ body {
     text-shadow: 1px 1px 4px #000;
 }
 
-.header h1, .header h2, .header p {
-    margin: 5px;
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
 }
 
 /* Estructura principal */
@@ -38,12 +39,6 @@ body {
 }
 
 /* Elementos de la lista */
-#song-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .song-item {
     padding: 12px 15px;
     border-bottom: 1px solid #ddd;
@@ -122,19 +117,22 @@ audio::-moz-range-track {
     border: 1px solid #e9d8b7;
 }
 
-/* Botones de navegación */
-.back-button-container {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
+/* Navegación de audio (BOTONES INFERIORES) */
 .audio-navigation {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    flex-wrap: wrap;
     gap: 15px;
-    margin-top: 20px;
 }
 
+.navigation-group {
+    display: flex;
+    gap: 15px;
+}
+
+/* Estilos para todos los botones */
 .nav-button {
     display: inline-flex;
     align-items: center;
@@ -171,37 +169,38 @@ audio::-moz-range-track {
     background-color: #806d5a;
     color: #fff;
     font-size: 14px;
+    text-align: center;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+    /* Ajustes generales */
     .playlist {
         width: 95%;
         padding: 15px;
     }
     
-    .audio-navigation {
-        flex-wrap: wrap;
-    }
-    
-    .nav-button {
-        padding: 6px 12px;
-        font-size: 13px;
+    .header h1 {
+        font-size: 1.4em;
     }
     
     audio {
         height: 40px;
     }
     
-    .header {
-        padding: 15px;
+    /* Navegación en móviles */
+    .audio-navigation {
+        flex-direction: column;
+        gap: 10px;
     }
     
-    .header h1 {
-        font-size: 1.5em;
+    .navigation-group {
+        width: 100%;
+        justify-content: space-between;
     }
     
-    .header h2 {
-        font-size: 1.2em;
+    .nav-button {
+        flex-grow: 1;
+        text-align: center;
     }
 }
