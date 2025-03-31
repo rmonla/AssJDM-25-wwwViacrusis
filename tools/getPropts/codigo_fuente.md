@@ -2,6 +2,7 @@
 
 ## ../../css/style.css
 
+
 ```css
 /* ===== ESTILOS BASE ===== */
 body {
@@ -96,6 +97,16 @@ body {
     text-decoration: underline;
 }
 
+.song-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.song-actions a {
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
 .icon-whatsapp {
     width: 24px;
     height: 24px;
@@ -122,6 +133,7 @@ body {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
 audio {
     width: 100%;
     min-width: 100%;
@@ -131,31 +143,50 @@ audio {
     box-sizing: border-box;
 }
 
+/* Controles del reproductor */
+audio::-webkit-media-controls-panel {
+    background-color: #f9f4ef;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    font-family: 'Georgia', serif;
+}
+
 /* ===== BOTONES ===== */
 .audio-navigation {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
-    margin-top: auto;
-    padding-top: 15px;
-    flex-shrink: 0;
     width: 100%;
+    padding-top: 15px;
+}
+
+.navigation-group {
+    display: flex;
+    gap: 10px;
 }
 
 .nav-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 15px;
-    font-size: 14px;
+    padding: 6px 12px;
+    font-size: 13px;
     color: #4a3e31;
     background-color: #e9d8b7;
     border: 1px solid #806d5a;
     border-radius: 20px;
+    text-align: center;
     text-decoration: none;
     transition: all 0.3s ease;
-    width: 90%;
+    width: auto;
+    min-width: 80px;
     max-width: 250px;
     box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
@@ -164,6 +195,32 @@ audio {
     background-color: #f9f4ef;
     color: #806d5a;
     box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #806d5a;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* ===== MODO OSCURO ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(to bottom, #3a3229, #2a241e);
+        color: #f0e6d2;
+    }
+    .playlist,
+    audio::-webkit-media-controls-panel {
+        background-color: #2a241e;
+    }
+    .song-link {
+        color: #ac9f84;
+    }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -188,152 +245,19 @@ audio {
         font-size: 12px;
     }
 }
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background: linear-gradient(to bottom, #3a3229, #2a241e);
-        color: #f0e6d2;
-    }
-    .playlist,
-    audio::-webkit-media-controls-panel {
-        background-color: #2a241e;
-    }
-    .song-link {
-        color: #ac9f84;
-    }
-}
-```
-
-## ../../incs/audioFiles.php
-
-```php
-<?php
-// Array de archivos de audio (debería centralizarse si es muy grande)
-$audioFiles = [
-[
-    'filename' => '101_v2502_La_entrada_de_Jesús_en_Jerusalén.mp3',
-    'display_name' => '101 - La entrada de Jesús en Jerusalén',
-    'id' => '101_v2502', 'order' => '0102', 'short_url' => '',
-],
-// mas de 20 item mas
-
-];
-
-```
-
-## ../../incs/footer.php
-
-```php
-<footer class="footer">
-    <p>Versión: <?= htmlspecialchars($latestVersion) ?> | Asociación CAMPS</p>
-</footer>
-</body>
-</html>
-```
-
-## ../../incs/functions.php
-
-```php
-<?php
-function getBaseURL() {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
-    $host = $_SERVER['HTTP_HOST'];
-    $path = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    return $protocol . "://" . $host . $path;
-}
-
-function getAudioById($id, $audioFiles) {
-    foreach ($audioFiles as $audio) {
-        if ($audio['id'] == $id) {
-            return $audio;
-        }
-    }
-    return null;
-}
-```
-
-## ../../incs/header.php
-
-```php
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Via Crusis del Barrio Yacampiz - 2025</title>
-</head>
-<body>
-<header class="header">
-    <h1>Via Crusis del Barrio Yacampiz - 2025</h1>
-</header>
-```
-
-## ../../incs/index.php
-
-```php
-<?php include 'kerberos.php'; ?>
-```
-
-## ../../incs/kerberos.php
-
-```php
-<?php
-// Verificar si se pasa el parámetro 'key' con el valor 'VCV2025'
-if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
-    header('Location: error.php');
-    exit();
-}
-?>
-<?php include 'header.php'; ?>
-    <main class="main-content">
-        <p>Contenido protegido accesible solo con la clave correcta.</p>
-    </main>
-<?php include 'footer.php'; ?>
-
-```
-
-## ../../incs/versionLogs.php
-
-```php
-<?php
-$versionLogs = [
-    '25.5' => [
-        'date' => '2025-03-30', // Actualizar con fecha de hoy
-        'changes' => [
-            'Rediseño completo del reproductor de audio',
-            'Implementación de navegación inferior unificada (Volver/Anterior/Siguiente)',
-            'Mejoras en el sistema responsive para móviles',
-            'Nuevos efectos visuales y microinteracciones:',
-            '   - Efecto "onda" en botones al hacer hover',
-            '   - Animación pulsante para icono de WhatsApp',
-            '   - Feedback visual al completar reproducción',
-            '   - Transición suave al cambiar entre audios',
-            'Rediseño del header con título simplificado',
-            'Reubicación de la versión al footer',
-            'Control de reproducción auto-ajustable al 100% del ancho',
-            'Compatibilidad con modo oscuro del sistema',
-            'Optimización de rendimiento para animaciones CSS',
-            'Corrección del sistema de range requests para navegación en pistas',
-            'Mejoras en la accesibilidad táctil para móviles',
-            'Integración de will-change para aceleración hardware',
-            'Correcciones específicas para navegadores (Firefox, Safari)'
-        ]
-    ],
-// Varios mas..    
-];
-
-// Ordena las claves del array en orden descendente
-uksort($versionLogs, 'version_compare');
-$latestVersion = array_key_last($versionLogs);
-$latestDetails = $versionLogs[$latestVersion];
-?>
 ```
 
 ## ../../index.php
 
+
 ```php
 <?php
+
+// http://rmnot:32768/?key=VCV2025
+
+// https://dns.frlr.utn.edu.ar/wwwVCV/?key=VCV2025
+// https://bit.ly/4kAW9aj
+// http://0.0.0.0:32768/?key=VCV2025
 
 require 'incs/functions.php';
 require 'incs/audioFiles.php';
@@ -347,31 +271,43 @@ if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
 $baseURL = getBaseURL();
 include 'incs/header.php';
 ?>
+
 <main class="main-content">
     <section class="playlist">
         <h3>Lista de Audios</h3>
         <ul id="song-list">
             <?php foreach ($audioFiles as $audio): 
                 $isActive = (isset($_GET['id']) && $_GET['id'] === $audio['id']);
+                $audioURL = getBaseURL() . "/play.php?id=" . urlencode($audio['id']) . "&wa=1";
             ?>
                 <li class="song-item <?= $isActive ? 'active' : '' ?>">
                     <a href="play.php?id=<?= htmlspecialchars($audio['id']) ?>" class="song-link">
                         <?= htmlspecialchars($audio['display_name']) ?>
                     </a>
-                    <?php if (!empty($audio['short_url'])): ?>
-                        <a href="https://wa.me/?text=<?= urlencode($audio['display_name'] . "\n" . $audio['short_url'] . "\nVia Crusis Viviente 2025") ?>" target="_blank">
-                            <img src="assets/whatsapp-icon.png" alt="Compartir" class="icon-whatsapp">
+                    
+                    <div class="song-actions">
+                        <!-- Botón de descarga -->
+                        <a href="serve.php?file=<?= urlencode($audio['filename']) ?>" download="<?= htmlspecialchars($audio['filename']) ?>">
+                            📥
                         </a>
-                    <?php endif; ?>
+
+                        <!-- Botón de compartir en WhatsApp -->
+                        <a href="https://wa.me/?text=<?= urlencode($audio['display_name'] . "\n" . $audioURL) ?>" target="_blank">
+                            <img src="assets/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp">
+                        </a>
+                    </div>
                 </li>
             <?php endforeach; ?>
         </ul>
     </section>
 </main>
+
+
 <?php include 'incs/footer.php'; ?>
 ```
 
 ## ../../play.php
+
 
 ```php
 <?php
@@ -394,12 +330,18 @@ $nextAudio = $currentIndex < count($audioFiles) - 1 ? $audioFiles[$currentIndex 
 
 include 'incs/header.php';
 ?>
+
+<?php
+// Verificar si la reproducción viene de WhatsApp (ocultar "volver")
+$hideNavButtons = isset($_GET['wa']) && $_GET['wa'] == '1';
+?>
+
 <main class="main-content">
     <section class="playlist">
         <h2 class="audio-title"><?= htmlspecialchars($audio['display_name']) ?></h2>
         
         <div class="audio-player-container">
-            <audio id="audioPlayer" controls>
+            <audio id="audioPlayer" controls controlsList="nodownload">
                 <source src="serve.php?file=<?= urlencode($audio['filename']) ?>" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
             </audio>
@@ -407,28 +349,24 @@ include 'incs/header.php';
                 <p>La reproducción automática está bloqueada. Por favor haz clic en el botón de play.</p>
             </div>
         </div>
-        
-        <div class="audio-navigation">
-            <div class="navigation-group">
+
+        <?php if (!$hideNavButtons): ?>
+            <div class="audio-navigation">
                 <a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">
-                    <span class="button-icon">←</span> Volver
+                    ← Volver
                 </a>
-            </div>
-            
-            <div class="navigation-group">
                 <?php if ($prevAudio): ?>
                     <a href="play.php?id=<?= htmlspecialchars($prevAudio['id']) ?>" class="nav-button prev-button">
-                        <span class="button-icon">⟵</span> Anterior
+                        ⟵ Anterior
                     </a>
                 <?php endif; ?>
-                
                 <?php if ($nextAudio): ?>
                     <a href="play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>" class="nav-button next-button">
-                        Siguiente <span class="button-icon">⟶</span>
+                        Siguiente ⟶
                     </a>
-                <?php endif; ?>
+                    <?php endif; ?>
             </div>
-        </div>
+        <?php endif; ?>
     </section>
 </main>
 
@@ -465,6 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 ## ../../serve.php
+
 
 ```php
 <?php
@@ -532,5 +471,6 @@ if (isset($_SERVER['HTTP_RANGE'])) {
     readfile($filePath);
 }
 exit();
-?>```
+?>
+```
 
