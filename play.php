@@ -18,6 +18,12 @@ $nextAudio = $currentIndex < count($audioFiles) - 1 ? $audioFiles[$currentIndex 
 
 include 'incs/header.php';
 ?>
+
+<?php
+// Verificar si la reproducción viene de WhatsApp (ocultar "volver")
+$hideNavButtons = isset($_GET['wa']) && $_GET['wa'] == '1';
+?>
+
 <main class="main-content">
     <section class="playlist">
         <h2 class="audio-title"><?= htmlspecialchars($audio['display_name']) ?></h2>
@@ -31,28 +37,24 @@ include 'incs/header.php';
                 <p>La reproducción automática está bloqueada. Por favor haz clic en el botón de play.</p>
             </div>
         </div>
-        
-        <div class="audio-navigation">
-            <div class="navigation-group">
+
+        <?php if (!$hideNavButtons): ?>
+            <div class="audio-navigation">
                 <a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">
-                    <span class="button-icon">←</span> Volver
+                    ← Volver
                 </a>
-            </div>
-            
-            <div class="navigation-group">
                 <?php if ($prevAudio): ?>
                     <a href="play.php?id=<?= htmlspecialchars($prevAudio['id']) ?>" class="nav-button prev-button">
-                        <span class="button-icon">⟵</span> Anterior
+                        ⟵ Anterior
                     </a>
                 <?php endif; ?>
-                
                 <?php if ($nextAudio): ?>
                     <a href="play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>" class="nav-button next-button">
-                        Siguiente <span class="button-icon">⟶</span>
+                        Siguiente ⟶
                     </a>
-                <?php endif; ?>
+                    <?php endif; ?>
             </div>
-        </div>
+        <?php endif; ?>
     </section>
 </main>
 
