@@ -34,9 +34,9 @@ for ruta_archivo in "${archivos[@]}"; do
         echo "" >> "$output_file"
         
         # Agregar código entre bloques de markdown
-        echo "\`\`\`$extension" >> "$output_file"
+        echo -e "\n\`\`\`$extension" >> "$output_file"
         cat "$ruta_archivo" >> "$output_file"
-        echo "\`\`\`" >> "$output_file"
+        echo -e "\n\`\`\`" >> "$output_file"
         echo "" >> "$output_file"
     else
         echo "Advertencia: El archivo $ruta_archivo no existe y será omitido." >&2
