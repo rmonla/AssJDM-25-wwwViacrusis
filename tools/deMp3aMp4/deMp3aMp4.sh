@@ -7,7 +7,7 @@ dirMP3s="media"a#!/bin/bash
 # Configuración por defecto
 default_img="viacrucis.jpg"
 dirMP3s="media"
-dirM4As="tempVCV25"
+dirM4As="media"
 dirMP4_OUT="output_mp4"
 dirMP3_OUT="output_mp3"
 
