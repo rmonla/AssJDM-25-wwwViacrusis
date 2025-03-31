@@ -107,7 +107,7 @@ $audioFiles = [
     'id' => '303_v2502', 'order' => '0303', 'short_url' => '',
 ],
 [
-    'filename' => '304_v2503_12ºE_Jesús_muere_en_la_cruz.mp3',
+    'filename' => '304_v2504_12ºE_Jesús_muere_en_la_cruz.mp3',
     'display_name' => '304 - 12ºE - Jesús muere en la cruz',
     'id' => '304_v2502', 'order' => '0304', 'short_url' => '',
 ],
@@ -117,23 +117,23 @@ $audioFiles = [
     'id' => '305_v2502', 'order' => '0305', 'short_url' => '',
 ],
 [
-    'filename' => '306_v2502_14ºE_Jesús_es_colocado_en_el_sepulcro.mp3',
-    'display_name' => '306 - 14ºE - Jesús es colocado en el sepulcro',
+    'filename' => '306_v2502_Jesús_es_llevado_por_las_calles.mp3',
+    'display_name' => '306 - Jesús es llevado por las calles',
     'id' => '306_v2502', 'order' => '0306', 'short_url' => '',
 ],
 [
-    'filename' => '307_v2502_La_Puerta_de_Piedra.mp3',
-    'display_name' => '307 - La Puerta de Piedra',
+    'filename' => '307_v2503_14ºE_Jesús_es_colocado_en_el_sepulcro.mp3',
+    'display_name' => '307 - 14ºE - Jesús es colocado en el sepulcro.mp3',
     'id' => '307_v2502', 'order' => '0307', 'short_url' => '',
 ],
 [
-    'filename' => '308_v2502_El_Sepulcro.mp3',
+    'filename' => '308_v2503_El_Sepulcro.mp3',
     'display_name' => '308 - El Sepulcro',
-    'id' => '308_v2502', 'order' => '0308', 'short_url' => '',
+    'id' => '308_v2503', 'order' => '0308', 'short_url' => '',
 ],
 [
-    'filename' => '309_v2502_El_Anuncio_de_la_Resurección.mp3',
-    'display_name' => '309 - El Anuncio de la Resurección',
+    'filename' => '309_v2502_La_Resurección.mp3',
+    'display_name' => '309 - La Resurección',
     'id' => '309_v2502', 'order' => '0309', 'short_url' => '',
 ],
 [
