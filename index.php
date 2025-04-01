@@ -1,11 +1,4 @@
 <?php
-
-// http://rmnot:32768/?key=VCV2025
-
-// https://dns.frlr.utn.edu.ar/wwwVCV/?key=VCV2025
-// https://bit.ly/4kAW9aj
-// http://0.0.0.0:32768/?key=VCV2025
-
 require 'incs/functions.php';
 require 'incs/audioFiles.php';
 require 'incs/versionLogs.php';
