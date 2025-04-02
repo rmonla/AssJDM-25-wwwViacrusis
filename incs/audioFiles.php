@@ -12,7 +12,7 @@ $audioFiles = [
     'id' => '102_v2503', 'order' => '0103', 'short_url' => '',
 ],
 [
-    'filename' => '103_v2509_La_Última_Cena_Adeje16+Aguas+Monedas.mp3',
+    'filename' => '103_v2509_La_Última_Cena_Adeje16-Aguas-Monedas.mp3',
     'display_name' => '103 - La Última Cena',
     'id' => '103_v2509', 'order' => '0104', 'short_url' => '',
 ],
@@ -22,12 +22,12 @@ $audioFiles = [
     'id' => '104_v2503', 'order' => '0105', 'short_url' => '',
 ],
 [
-    'filename' => '105_v2504_La_Entrega+MúsicaFinal.mp3',
+    'filename' => '105_v2504_La_Entrega-MúsicaFinal.mp3',
     'display_name' => '105 - La Entrega',
     'id' => '105_v2504', 'order' => '0106', 'short_url' => '',
 ],
 [
-    'filename' => '106_v2504_Las_negaciones_de_Pedro+MusicaAlInicio.mp3',
+    'filename' => '106_v2504_Las_negaciones_de_Pedro-MusicaAlInicio.mp3',
     'display_name' => '106 - Las negaciones de Pedro',
     'id' => '106_v2504', 'order' => '0107', 'short_url' => '',
 ],
