@@ -2,7 +2,13 @@
 
 # Array de rutas de archivos
 archivos=(
-    "../../css/style.css"
+    "../../incs/audioFiles.php"
+    "../../incs/footer.php"
+    "../../incs/functions.php"
+    "../../incs/header.php"
+    "../../incs/index.php"
+    "../../incs/kerberos.php"
+    "../../incs/versionLogs.php"
     "../../index.php"
     "../../play.php"
     "../../serve.php"
@@ -10,13 +16,6 @@ archivos=(
 
 # archivos=(
 #     "../../css/style.css"
-#     "../../incs/audioFiles.php"
-#     "../../incs/footer.php"
-#     "../../incs/functions.php"
-#     "../../incs/header.php"
-#     "../../incs/index.php"
-#     "../../incs/kerberos.php"
-#     "../../incs/versionLogs.php"
 #     "../../index.php"
 #     "../../play.php"
 #     "../../serve.php"

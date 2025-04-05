@@ -1,250 +1,138 @@
 # Código Fuente Recolectado
 
-## ../../css/style.css
+## ../../incs/audioFiles.php
 
 
-```css
-/* ===== ESTILOS BASE ===== */
-body {
-    font-family: 'Georgia', serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #fdf7e3, #e9d8b7);
-    color: #4a3e31;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+```php
+<?php
+// Array de archivos de audio (debería centralizarse si es muy grande)
+$audioFiles = [
+    [
+        'filename' => '001_v2502_Música_Pueblo.mp3',
+        'display_name' => '001 Música Pueblo.mp3',
+        'id' => '001_v2502', 'order' => '0102', 'short_url' => '',
+    ],
+// Y varios elementos mas ...
+];
+```
+
+## ../../incs/footer.php
+
+
+```php
+<footer class="footer">
+    <p>Versión: <?= htmlspecialchars($latestVersion) ?> | Asociación CAMPS</p>
+</footer>
+</body>
+</html>
+```
+
+## ../../incs/functions.php
+
+
+```php
+<?php
+function getBaseURL() {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+    $host = $_SERVER['HTTP_HOST'];
+    $path = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    return $protocol . "://" . $host . $path;
 }
 
-/* ===== HEADER COMPACTO ===== */
-.header {
-    background-color: #806d5a;
-    padding: 12px 15px;
-    color: #fff;
-    text-shadow: 1px 1px 4px #000;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    flex-shrink: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 1.3em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* ===== LISTA DE REPRODUCCIÓN ===== */
-.playlist {
-    background-color: #f9f4ef;
-    border: 2px solid #806d5a;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px auto;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-#song-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.song-item {
-    padding: 12px 15px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-    background-color: #f9f4ef;
-    box-sizing: border-box;
-}
-
-.song-item:hover {
-    background-color: #f0e6d2;
-    transform: translateX(5px);
-}
-
-.song-item.active {
-    background-color: #e0d0a7;
-    transform: translateX(8px);
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-
-.song-link {
-    text-decoration: none;
-    color: #4a3e31;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.song-link:hover {
-    color: #806d5a;
-    text-decoration: underline;
-}
-
-.song-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.song-actions a {
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-.icon-whatsapp {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.icon-whatsapp:hover {
-    transform: scale(1.2);
-}
-
-/* ===== REPRODUCTOR ===== */
-.audio-player-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 15px auto;
-    padding: 0;
-    flex-shrink: 0;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-.audio-title {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-audio {
-    width: 100%;
-    min-width: 100%;
-    height: 50px;
-    background-color: #f9f4ef;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-/* Controles del reproductor */
-audio::-webkit-media-controls-panel {
-    background-color: #f9f4ef;
-    border-radius: 8px;
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-    font-family: 'Georgia', serif;
-}
-
-/* ===== BOTONES ===== */
-.audio-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding-top: 15px;
-}
-
-.navigation-group {
-    display: flex;
-    gap: 10px;
-}
-
-.nav-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px 12px;
-    font-size: 13px;
-    color: #4a3e31;
-    background-color: #e9d8b7;
-    border: 1px solid #806d5a;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: auto;
-    min-width: 80px;
-    max-width: 250px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
-}
-
-.nav-button:hover {
-    background-color: #f9f4ef;
-    color: #806d5a;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
-
-/* ===== FOOTER ===== */
-.footer {
-    margin-top: auto;
-    padding: 10px;
-    background-color: #806d5a;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-    flex-shrink: 0;
-}
-
-/* ===== MODO OSCURO ===== */
-@media (prefers-color-scheme: dark) {
-    body {
-        background: linear-gradient(to bottom, #3a3229, #2a241e);
-        color: #f0e6d2;
+function getAudioById($id, $audioFiles) {
+    foreach ($audioFiles as $audio) {
+        if ($audio['id'] == $id) {
+            return $audio;
+        }
     }
-    .playlist,
-    audio::-webkit-media-controls-panel {
-        background-color: #2a241e;
-    }
-    .song-link {
-        color: #ac9f84;
-    }
+    return null;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .playlist {
-        width: 95%;
-    }
-    .nav-button {
-        padding: 7px 10px;
-        font-size: 13px;
-    }
-}
+```
 
-@media (max-width: 480px) {
-    .playlist {
-        width: 100%;
-        padding: 10px;
-    }
-    .nav-button {
-        width: 100%;
-        padding: 6px 8px;
-        font-size: 12px;
-    }
+## ../../incs/header.php
+
+
+```php
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Via Crusis del Barrio Yacampiz - 2025</title>
+</head>
+<body>
+<header class="header">
+    <h1>Via Crusis del Barrio Yacampiz - 2025</h1>
+</header>
+```
+
+## ../../incs/index.php
+
+
+```php
+<?php include 'kerberos.php'; ?>
+```
+
+## ../../incs/kerberos.php
+
+
+```php
+<?php
+// Verificar si se pasa el parámetro 'key' con el valor 'VCV2025'
+if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
+    header('Location: error.php');
+    exit();
 }
+?>
+<?php include 'header.php'; ?>
+    <main class="main-content">
+        <p>Contenido protegido accesible solo con la clave correcta.</p>
+    </main>
+<?php include 'footer.php'; ?>
+
+
+```
+
+## ../../incs/versionLogs.php
+
+
+```php
+<?php
+$versionLogs = [
+    '25.5' => [
+        'date' => '2025-03-30', // Actualizar con fecha de hoy
+        'changes' => [
+            'Rediseño completo del reproductor de audio',
+            'Implementación de navegación inferior unificada (Volver/Anterior/Siguiente)',
+            'Mejoras en el sistema responsive para móviles',
+            'Nuevos efectos visuales y microinteracciones:',
+            '   - Efecto "onda" en botones al hacer hover',
+            '   - Animación pulsante para icono de WhatsApp',
+            '   - Feedback visual al completar reproducción',
+            '   - Transición suave al cambiar entre audios',
+            'Rediseño del header con título simplificado',
+            'Reubicación de la versión al footer',
+            'Control de reproducción auto-ajustable al 100% del ancho',
+            'Compatibilidad con modo oscuro del sistema',
+            'Optimización de rendimiento para animaciones CSS',
+            'Corrección del sistema de range requests para navegación en pistas',
+            'Mejoras en la accesibilidad táctil para móviles',
+            'Integración de will-change para aceleración hardware',
+            'Correcciones específicas para navegadores (Firefox, Safari)'
+        ]
+    ],
+    // Y varios elementos mas ...
+
+];
+
+// Ordena las claves del array en orden descendente
+uksort($versionLogs, 'version_compare');
+$latestVersion = array_key_last($versionLogs);
+$latestDetails = $versionLogs[$latestVersion];
+?>
+
 ```
 
 ## ../../index.php
@@ -252,13 +140,6 @@ audio::-webkit-media-controls-time-remaining-display {
 
 ```php
 <?php
-
-// http://rmnot:32768/?key=VCV2025
-
-// https://dns.frlr.utn.edu.ar/wwwVCV/?key=VCV2025
-// https://bit.ly/4kAW9aj
-// http://0.0.0.0:32768/?key=VCV2025
-
 require 'incs/functions.php';
 require 'incs/audioFiles.php';
 require 'incs/versionLogs.php';
@@ -293,8 +174,11 @@ include 'incs/header.php';
 
                         <!-- Botón de compartir en WhatsApp -->
                         <a href="https://wa.me/?text=<?= urlencode($audio['display_name'] . "\n" . $audioURL) ?>" target="_blank">
-                            <img src="assets/whatsapp-icon.png" alt="WhatsApp" class="icon-whatsapp">
+                            <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="#25D366">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
                         </a>
+
                     </div>
                 </li>
             <?php endforeach; ?>
@@ -304,6 +188,7 @@ include 'incs/header.php';
 
 
 <?php include 'incs/footer.php'; ?>
+
 ```
 
 ## ../../play.php
@@ -315,91 +200,128 @@ require 'incs/functions.php';
 require 'incs/audioFiles.php';
 require 'incs/versionLogs.php';
 
+// Configuración inicial
 $id = $_GET['id'] ?? null;
 $audio = getAudioById($id, $audioFiles);
 $dirMEDIA = 'media';
+$hideNavButtons = isset($_GET['wa']) && $_GET['wa'] == '1';
 
+// Validación de archivo
 if (!$audio || !file_exists($dirMEDIA . '/' . $audio['filename'])) {
     http_response_code(404);
     die('Archivo no encontrado.');
 }
 
+// Navegación entre audios
 $currentIndex = array_search($audio, $audioFiles, true);
 $prevAudio = $currentIndex > 0 ? $audioFiles[$currentIndex - 1] : null;
 $nextAudio = $currentIndex < count($audioFiles) - 1 ? $audioFiles[$currentIndex + 1] : null;
 
-include 'incs/header.php';
-?>
+// Generación de contenido condicional
+$audio_title = htmlspecialchars($audio['display_name']);
+$audio_file = htmlspecialchars($audio['filename']);
 
-<?php
-// Verificar si la reproducción viene de WhatsApp (ocultar "volver")
-$hideNavButtons = isset($_GET['wa']) && $_GET['wa'] == '1';
-?>
-
-<main class="main-content">
-    <section class="playlist">
-        <h2 class="audio-title"><?= htmlspecialchars($audio['display_name']) ?></h2>
-        
-        <div class="audio-player-container">
-            <audio id="audioPlayer" controls controlsList="nodownload">
-                <source src="serve.php?file=<?= urlencode($audio['filename']) ?>" type="audio/mpeg">
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-            <div id="autoplayMessage" class="autoplay-message">
-                <p>La reproducción automática está bloqueada. Por favor haz clic en el botón de play.</p>
-            </div>
-        </div>
-
-        <?php if (!$hideNavButtons): ?>
-            <div class="audio-navigation">
-                <a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">
-                    ← Volver
-                </a>
-                <?php if ($prevAudio): ?>
-                    <a href="play.php?id=<?= htmlspecialchars($prevAudio['id']) ?>" class="nav-button prev-button">
-                        ⟵ Anterior
-                    </a>
-                <?php endif; ?>
-                <?php if ($nextAudio): ?>
-                    <a href="play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>" class="nav-button next-button">
-                        Siguiente ⟶
-                    </a>
-                    <?php endif; ?>
-            </div>
-        <?php endif; ?>
-    </section>
-</main>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.getElementById('audioPlayer');
-    var autoplayMessage = document.getElementById('autoplayMessage');
-    
-    var playPromise = audio.play();
-    
-    if (playPromise !== undefined) {
-        playPromise.then(_ => {
-            autoplayMessage.style.display = 'none';
-        })
-        .catch(error => {
-            autoplayMessage.style.display = 'block';
-            audio.controls = true;
-        });
+// Generación de botones de navegación
+$buttons = [];
+if (!$hideNavButtons) {
+    if ($prevAudio) {
+        $buttons[] = sprintf(
+            '<a href="play.php?id=%s" class="nav-button prev-button">⟵ Anterior</a>',
+            htmlspecialchars($prevAudio['id'])
+        );
     }
-    
-    audio.addEventListener('ended', function() {
-        document.querySelector('.audio-player-container').classList.add('ended');
-        setTimeout(() => {
-            document.querySelector('.audio-player-container').classList.remove('ended');
-            <?php if ($nextAudio): ?>
-                window.location.href = 'play.php?id=<?= htmlspecialchars($nextAudio['id']) ?>';
-            <?php endif; ?>
-        }, 1500);
-    });
-});
-</script>
 
-<?php include 'incs/footer.php'; ?>
+    $buttons[] = sprintf(
+        '<a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">← Volver</a>'
+    );
+
+    if ($nextAudio) {
+        $buttons[] = sprintf(
+            '<a href="play.php?id=%s" class="nav-button next-button">Siguiente ⟶</a>',
+            htmlspecialchars($nextAudio['id'])
+        );
+    }
+
+    $htmlBOTONEs = sprintf('<div class="audio-navigation">%s</div>', implode('', $buttons));
+} else {
+    $htmlBOTONEs = '';
+}
+
+// Generación de JavaScript condicional
+$javascriptCode = '';
+if (!$hideNavButtons) {
+    $autonextScript = '';
+    if ($nextAudio) {
+        $autonextScript = sprintf(
+            "window.location.href = 'play.php?id=%s';",
+            htmlspecialchars($nextAudio['id'])
+        );
+    }
+
+    $javascriptCode = sprintf(
+        <<<'JS'
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var audio = document.getElementById('audioPlayer');
+                var autoplayMessage = document.getElementById('autoplayMessage');
+                
+                // Intentar autoplay (siempre que no sea desde WhatsApp)
+                var playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        autoplayMessage.style.display = 'none';
+                    }).catch(error => {
+                        autoplayMessage.style.display = 'block';
+                        audio.controls = true;
+                    });
+                }
+                
+                // Configurar autonext solo si hay siguiente audio
+                audio.addEventListener('ended', function() {
+                    document.querySelector('.audio-player-container').classList.add('ended');
+                    setTimeout(() => {
+                        document.querySelector('.audio-player-container').classList.remove('ended');
+                        %s
+                    }, 500);
+                });
+            });
+        </script>
+        JS,
+        $autonextScript
+    );
+}
+
+// Construcción del HTML final
+$htmlMAIN = sprintf(
+    <<<'HTML'
+    <main class="main-content">
+        <section class="playlist">
+            <h2 class="audio-title">%s</h2>
+            <div class="audio-player-container">
+                <audio id="audioPlayer" controls controlsList="nodownload">
+                    <source src="serve.php?file=%s" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+                %s
+            </div>
+            %s
+            %s
+        </section>
+    </main>
+    HTML,
+    $audio_title,
+    $audio_file,
+    (!$hideNavButtons ? '<div id="autoplayMessage" class="autoplay-message"><p>La reproducción automática está bloqueada. Por favor haz clic en el botón de play.</p></div>' : ''),
+    $htmlBOTONEs,
+    $javascriptCode
+);
+
+// Salida final
+include 'incs/header.php';
+echo $htmlMAIN;
+include 'incs/footer.php';
+?>
 ```
 
 ## ../../serve.php
