@@ -1,11 +1,62 @@
-// Función para inicializar el reproductor de audio
+// Función mejorada para fade out con callback garantizado
+function fadeOutAudio(audioElement, callback) {
+    const fadeDuration = 800; // 0.8 segundos de fade
+    const fadeSteps = 20; // Pasos del fade
+    const stepTime = fadeDuration / fadeSteps;
+    const initialVolume = audioElement.volume;
+    const stepDecrease = initialVolume / fadeSteps;
+    
+    // Guardar el estado original del audio
+    const originalValues = {
+        volume: audioElement.volume,
+        playbackRate: audioElement.playbackRate
+    };
+
+    let stepsCompleted = 0;
+    
+    const fadeInterval = setInterval(() => {
+        if (stepsCompleted < fadeSteps) {
+            audioElement.volume = Math.max(0, audioElement.volume - stepDecrease);
+            stepsCompleted++;
+        } else {
+            clearInterval(fadeInterval);
+            audioElement.pause();
+            // Restaurar valores originales antes de redireccionar
+            audioElement.volume = originalValues.volume;
+            audioElement.playbackRate = originalValues.playbackRate;
+            
+            // Ejecutar callback después de restaurar valores
+            if (typeof callback === 'function') {
+                setTimeout(callback, 100); // Pequeño retraso para asegurar
+            }
+        }
+    }, stepTime);
+}
+
+// Función de inicialización mejorada
 function initAudioPlayer() {
     const audio = document.getElementById('audioPlayer');
     const autoplayMessage = document.getElementById('autoplayMessage');
     const nextButton = document.querySelector('.next-button');
     const isLastAudio = nextButton && nextButton.dataset.isLast === 'true';
     
-    // Intentar autoplay (siempre que no sea desde WhatsApp)
+    // Configurar eventos de navegación con fade out
+    document.querySelectorAll('.nav-button').forEach(button => {
+        if (button.classList.contains('next-button') || 
+            button.classList.contains('prev-button')) {
+            
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetUrl = this.href;
+                
+                fadeOutAudio(audio, () => {
+                    window.location.href = targetUrl;
+                });
+            });
+        }
+    });
+
+    // Configurar autoplay y eventos
     const playPromise = audio.play();
     
     if (playPromise !== undefined) {
@@ -17,7 +68,7 @@ function initAudioPlayer() {
         });
     }
     
-    // Configurar comportamiento al terminar la reproducción
+    // Configurar evento de finalización con fade out
     audio.addEventListener('ended', function() {
         const playerContainer = document.querySelector('.audio-player-container');
         playerContainer.classList.add('ended');
@@ -25,23 +76,20 @@ function initAudioPlayer() {
         setTimeout(() => {
             playerContainer.classList.remove('ended');
             
-            if (isLastAudio) {
-                // Cambiar el botón "Siguiente" por "Iniciar nuevamente"
-                if (nextButton) {
-                    nextButton.textContent = 'Iniciar nuevamente';
-                    nextButton.href = 'play.php?id=' + nextButton.dataset.firstAudioId;
-                }
-                
-                // Volver al primer audio si está configurado el autoNext
-                if (window.autoNextEnabled) {
+            if (isLastAudio && window.autoNextEnabled) {
+                fadeOutAudio(audio, () => {
                     window.location.href = 'play.php?id=' + nextButton.dataset.firstAudioId;
-                }
-            } else if (nextButton) {
-                // Navegar al siguiente audio si no es el último
-                window.location.href = nextButton.href;
+                });
+            } else if (nextButton && window.autoNextEnabled) {
+                fadeOutAudio(audio, () => {
+                    window.location.href = nextButton.href;
+                });
             }
         }, 500);
     });
+    
+    // Inicializar volumen
+    audio.volume = 1.0;
 }
 
 // Inicializar cuando el DOM esté listo

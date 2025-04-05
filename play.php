@@ -68,14 +68,21 @@ if (!$hideNavButtons) {
 
 $htmlBOTONEs = !$hideNavButtons ? sprintf('<div class="audio-navigation">%s</div>', implode('', $buttons)) : '';
 
-// Configuración de JavaScript
+// Incluir el archivo JavaScript externo
 $javascriptCode = '';
 if (!$hideNavButtons) {
     $javascriptCode = sprintf(
         <<<'HTML'
         <script>
+            // Variable global para controlar el autoNext
             window.autoNextEnabled = true;
             window.firstAudioId = '%s';
+            
+            // Configurar volumen inicial
+            document.addEventListener('DOMContentLoaded', function() {
+                const audio = document.getElementById('audioPlayer');
+                audio.volume = 1.0; // Volumen máximo al inicio
+            });
         </script>
         <script src="jss/js.js"></script>
         HTML,
