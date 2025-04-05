@@ -86,7 +86,7 @@ if (!$hideNavButtons) {
                     setTimeout(() => {
                         document.querySelector('.audio-player-container').classList.remove('ended');
                         %s
-                    }, 1500);
+                    }, 500);
                 });
             });
         </script>
