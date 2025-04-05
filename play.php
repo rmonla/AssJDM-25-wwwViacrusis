@@ -24,6 +24,12 @@ $nextAudio = $currentIndex < count($audioFiles) - 1 ? $audioFiles[$currentIndex 
 $audio_title = htmlspecialchars($audio['display_name']);
 $audio_file = htmlspecialchars($audio['filename']);
 
+// ... (código existente hasta la generación de botones de navegación)
+
+// Determinar si es el último audio
+$isLastAudio = $nextAudio === null;
+$firstAudioId = $audioFiles[0]['id'] ?? '';
+
 // Generación de botones de navegación
 $buttons = [];
 if (!$hideNavButtons) {
@@ -40,8 +46,17 @@ if (!$hideNavButtons) {
 
     if ($nextAudio) {
         $buttons[] = sprintf(
-            '<a href="play.php?id=%s" class="nav-button next-button">Siguiente ⟶</a>',
-            htmlspecialchars($nextAudio['id'])
+            '<a href="play.php?id=%s" class="nav-button next-button" data-is-last="%s" data-first-audio-id="%s">Siguiente ⟶</a>',
+            htmlspecialchars($nextAudio['id']),
+            $isLastAudio ? 'true' : 'false',
+            htmlspecialchars($firstAudioId)
+        );
+    } else {
+        // Botón para reiniciar si es el último audio
+        $buttons[] = sprintf(
+            '<a href="play.php?id=%s" class="nav-button next-button" data-is-last="true" data-first-audio-id="%s">Iniciar nuevamente</a>',
+            htmlspecialchars($firstAudioId),
+            htmlspecialchars($firstAudioId)
         );
     }
 
@@ -50,48 +65,19 @@ if (!$hideNavButtons) {
     $htmlBOTONEs = '';
 }
 
-// Generación de JavaScript condicional
+// Incluir el archivo JavaScript externo
 $javascriptCode = '';
 if (!$hideNavButtons) {
-    $autonextScript = '';
-    if ($nextAudio) {
-        $autonextScript = sprintf(
-            "window.location.href = 'play.php?id=%s';",
-            htmlspecialchars($nextAudio['id'])
-        );
-    }
-
     $javascriptCode = sprintf(
-        <<<'JS'
+        <<<'HTML'
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var audio = document.getElementById('audioPlayer');
-                var autoplayMessage = document.getElementById('autoplayMessage');
-                
-                // Intentar autoplay (siempre que no sea desde WhatsApp)
-                var playPromise = audio.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        autoplayMessage.style.display = 'none';
-                    }).catch(error => {
-                        autoplayMessage.style.display = 'block';
-                        audio.controls = true;
-                    });
-                }
-                
-                // Configurar autonext solo si hay siguiente audio
-                audio.addEventListener('ended', function() {
-                    document.querySelector('.audio-player-container').classList.add('ended');
-                    setTimeout(() => {
-                        document.querySelector('.audio-player-container').classList.remove('ended');
-                        %s
-                    }, 500);
-                });
-            });
+            // Variable global para controlar el autoNext
+            window.autoNextEnabled = true;
+            window.firstAudioId = '%s';
         </script>
-        JS,
-        $autonextScript
+        <script src="jss/js.js"></script>
+        HTML,
+        htmlspecialchars($firstAudioId)
     );
 }
 
