@@ -1,20 +1,60 @@
 <?php
 // Array de archivos de audio (debería centralizarse si es muy grande)
 $audioFiles = [
+    [
+        'filename' => '001_v2501_Música_Pueblo.mp3',
+        'display_name' => '001 Música Pueblo.mp3',
+        'id' => '001_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '002_v2501_Música_Bailarinas_y_Reyes.mp3',
+        'display_name' => '002 Música Bailarinas y Reyes.mp3',
+        'id' => '002_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '003_v2501_Música_Los_Apóstoles.mp3',
+        'display_name' => '003 Música Los Apóstoles.mp3',
+        'id' => '003_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '004_v2501_Música_Diablo_y_Judas.mp3',
+        'display_name' => '004 Música Diablo y Judas.mp3',
+        'id' => '004_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '005_v2501_Música_El_Cielo.mp3',
+        'display_name' => '005 Música El Cielo.mp3',
+        'id' => '005_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '006_v2501_Música_Soldados.mp3',
+        'display_name' => '006 Música Soldados.mp3',
+        'id' => '006_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '007_v2501_Música_Suspenso.mp3',
+        'display_name' => '007 Música Suspenso.mp3',
+        'id' => '007_v2501', 'order' => '0102', 'short_url' => '',
+    ],
+    [
+        'filename' => '008_v2501_Música_Reflección_Final.mp3',
+        'display_name' => '008 Música Reflección Final.mp3',
+        'id' => '008_v2501', 'order' => '0102', 'short_url' => '',
+    ],
 [
     'filename' => '101_v2503_La_entrada_de_Jesús_en_Jerusalén.mp3',
     'display_name' => '101 - La entrada de Jesús en Jerusalén',
     'id' => '101_v2503', 'order' => '0102', 'short_url' => '',
 ],
 [
-    'filename' => '102_v2504_El_Trato_de_Judas_y_Caifás.mp3',
-    'display_name' => '102 - El Trato de Judas y Caifás',
-    'id' => '102_v2503', 'order' => '0103', 'short_url' => '',
+'filename' => '102_v2504_El_Trato_de_Judas_y_Caifás.mp3',
+'display_name' => '102 - El Trato de Judas y Caifás',
+'id' => '102_v2504', 'order' => '0103', 'short_url' => '',
 ],
 [
     'filename' => '103_v2510_La_Última_Cena_Adeje16-Aguas-Monedas.mp3',
     'display_name' => '103 - La Última Cena',
-    'id' => '103_v2509', 'order' => '0104', 'short_url' => '',
+    'id' => '103_v2510', 'order' => '0104', 'short_url' => '',
 ],
 [
     'filename' => '104_v2503_La_oración_en_el_Monte_de_los_Olivos.mp3',
@@ -39,7 +79,7 @@ $audioFiles = [
 [
     'filename' => '108_v2504_La_Culpa_de_Judas.mp3',
     'display_name' => '108 - La Culpa de Judas',
-    'id' => '108_v2503', 'order' => '0109', 'short_url' => '',
+    'id' => '108_v2504', 'order' => '0109', 'short_url' => '',
 ],
 [
     'filename' => '109_v2503_El_lavado_de_las_manos_de_Pilatos.mp3',
@@ -89,7 +129,7 @@ $audioFiles = [
 [
     'filename' => '207_v2504_8ºE_Jesús_consuela_a_las_mujeres_de_Jerusalén.mp3',
     'display_name' => '207 - 8ºE - Jesús consuela a las mujeres de Jerusalén',
-    'id' => '207_v2503', 'order' => '0207', 'short_url' => '',
+    'id' => '207_v2504', 'order' => '0207', 'short_url' => '',
 ],
 [
     'filename' => '301_v2503_9ºE_Jesús_cae_por_tercera_vez.mp3',
