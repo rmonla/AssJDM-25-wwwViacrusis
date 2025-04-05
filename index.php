@@ -1,6 +1,5 @@
 <?php
 require 'incs/functions.php';
-require 'incs/audioFiles.php';
 require 'incs/versionLogs.php';
 
 if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
@@ -8,6 +7,7 @@ if (!isset($_GET['key']) || $_GET['key'] !== 'VCV2025') {
     exit();
 }
 
+$audioFiles = getAudioFiles('media');
 $baseURL = getBaseURL();
 include 'incs/header.php';
 ?>

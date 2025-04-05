@@ -3,6 +3,13 @@ require 'incs/functions.php';
 
 $dirMEDIA = 'media';
 $file = $_GET['file'] ?? '';
+
+// Validar estructura del nombre de archivo
+if (!preg_match('/^\d{3}_v\d{4}_.+\.mp3$/', $file)) {
+    http_response_code(403);
+    die('Formato de archivo no válido.');
+}
+
 $filePath = realpath($dirMEDIA . '/' . $file);
 
 // Validaciones de seguridad

@@ -1,16 +1,24 @@
 <?php
 require 'incs/functions.php';
-require 'incs/audioFiles.php';
 require 'incs/versionLogs.php';
 
 // Configuración inicial
-$id = $_GET['id'] ?? null;
-$audio = getAudioById($id, $audioFiles);
 $dirMEDIA = 'media';
-$hideNavButtons = isset($_GET['wa']) && $_GET['wa'] == '1';
+$id = $_GET['id'] ?? null;
+$hideNavButtons = isset($_GET['wa']) && $_GET['wa'] == '1'; // Definir la variable aquí
+$audioFiles = getAudioFiles($dirMEDIA);
+
+// Buscar el audio por ID
+$audio = null;
+foreach ($audioFiles as $item) {
+    if ($item['id'] === $id) {
+        $audio = $item;
+        break;
+    }
+}
 
 // Validación de archivo
-if (!$audio || !file_exists($dirMEDIA . '/' . $audio['filename'])) {
+if (!$audio || !file_exists($audio['path'])) {
     http_response_code(404);
     die('Archivo no encontrado.');
 }
@@ -20,15 +28,13 @@ $currentIndex = array_search($audio, $audioFiles, true);
 $prevAudio = $currentIndex > 0 ? $audioFiles[$currentIndex - 1] : null;
 $nextAudio = $currentIndex < count($audioFiles) - 1 ? $audioFiles[$currentIndex + 1] : null;
 
-// Generación de contenido condicional
-$audio_title = htmlspecialchars($audio['display_name']);
-$audio_file = htmlspecialchars($audio['filename']);
-
-// ... (código existente hasta la generación de botones de navegación)
-
 // Determinar si es el último audio
 $isLastAudio = $nextAudio === null;
 $firstAudioId = $audioFiles[0]['id'] ?? '';
+
+// Generación de contenido
+$audio_title = htmlspecialchars($audio['display_name']);
+$audio_file = htmlspecialchars($audio['filename']);
 
 // Generación de botones de navegación
 $buttons = [];
@@ -52,26 +58,22 @@ if (!$hideNavButtons) {
             htmlspecialchars($firstAudioId)
         );
     } else {
-        // Botón para reiniciar si es el último audio
         $buttons[] = sprintf(
             '<a href="play.php?id=%s" class="nav-button next-button" data-is-last="true" data-first-audio-id="%s">Iniciar nuevamente</a>',
             htmlspecialchars($firstAudioId),
             htmlspecialchars($firstAudioId)
         );
     }
-
-    $htmlBOTONEs = sprintf('<div class="audio-navigation">%s</div>', implode('', $buttons));
-} else {
-    $htmlBOTONEs = '';
 }
 
-// Incluir el archivo JavaScript externo
+$htmlBOTONEs = !$hideNavButtons ? sprintf('<div class="audio-navigation">%s</div>', implode('', $buttons)) : '';
+
+// Configuración de JavaScript
 $javascriptCode = '';
 if (!$hideNavButtons) {
     $javascriptCode = sprintf(
         <<<'HTML'
         <script>
-            // Variable global para controlar el autoNext
             window.autoNextEnabled = true;
             window.firstAudioId = '%s';
         </script>
