@@ -37,7 +37,7 @@ function initAudioPlayer() {
     const isLastAudio = nextButton && nextButton.dataset.isLast === 'true';
 
     // Configurar eventos solo para botones de navegación
-    document.querySelectorAll('.prev-button, .next-button').forEach(button => {
+    document.querySelectorAll('.nav-button').forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             const targetUrl = this.href;

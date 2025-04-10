@@ -41,25 +41,42 @@ $buttons = [];
 if (!$hideNavButtons) {
     if ($prevAudio) {
         $buttons[] = sprintf(
-            '<a href="play.php?id=%s" class="nav-button prev-button">⟵ Anterior</a>',
+            '<a href="play.php?id=%s" 
+                class="nav-button prev-button">
+                ⟵ Anterior
+            </a>',
             htmlspecialchars($prevAudio['id'])
         );
     }
 
     $buttons[] = sprintf(
-        '<a href="index.php?key=VCV2025" class="nav-button back-button" title="Volver a la lista completa">← Volver</a>'
+        '<a href="index.php?key=VCV2025" 
+            class="nav-button back-button" 
+            title="Volver a la lista completa">
+            ← Volver
+        </a>'
     );
 
     if ($nextAudio) {
         $buttons[] = sprintf(
-            '<a href="play.php?id=%s" class="nav-button next-button" data-is-last="%s" data-first-audio-id="%s">Siguiente ⟶</a>',
+            '<a href="play.php?id=%s" 
+                class="nav-button next-button" 
+                data-is-last="%s" 
+                data-first-audio-id="%s">
+                Siguiente ⟶
+            </a>',
             htmlspecialchars($nextAudio['id']),
             $isLastAudio ? 'true' : 'false',
             htmlspecialchars($firstAudioId)
         );
     } else {
         $buttons[] = sprintf(
-            '<a href="play.php?id=%s" class="nav-button next-button" data-is-last="true" data-first-audio-id="%s">Iniciar nuevamente</a>',
+            '<a href="play.php?id=%s" 
+                class="nav-button next-button" 
+                data-is-last="true" 
+                data-first-audio-id="%s">
+                Iniciar nuevamente
+            </a>',
             htmlspecialchars($firstAudioId),
             htmlspecialchars($firstAudioId)
         );
