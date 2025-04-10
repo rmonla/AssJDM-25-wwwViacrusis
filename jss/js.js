@@ -1,12 +1,11 @@
-// Función mejorada para fade out con callback garantizado
+// Función de fade out (se mantiene igual)
 function fadeOutAudio(audioElement, callback) {
-    const fadeDuration = 800; // 0.8 segundos de fade
-    const fadeSteps = 20; // Pasos del fade
+    const fadeDuration = 800;
+    const fadeSteps = 20;
     const stepTime = fadeDuration / fadeSteps;
     const initialVolume = audioElement.volume;
     const stepDecrease = initialVolume / fadeSteps;
     
-    // Guardar el estado original del audio
     const originalValues = {
         volume: audioElement.volume,
         playbackRate: audioElement.playbackRate
@@ -21,42 +20,36 @@ function fadeOutAudio(audioElement, callback) {
         } else {
             clearInterval(fadeInterval);
             audioElement.pause();
-            // Restaurar valores originales antes de redireccionar
             audioElement.volume = originalValues.volume;
             audioElement.playbackRate = originalValues.playbackRate;
             
-            // Ejecutar callback después de restaurar valores
             if (typeof callback === 'function') {
-                setTimeout(callback, 100); // Pequeño retraso para asegurar
+                setTimeout(callback, 100);
             }
         }
     }, stepTime);
 }
 
-// Función de inicialización mejorada
 function initAudioPlayer() {
     const audio = document.getElementById('audioPlayer');
     const autoplayMessage = document.getElementById('autoplayMessage');
     const nextButton = document.querySelector('.next-button');
     const isLastAudio = nextButton && nextButton.dataset.isLast === 'true';
-    
-    // Configurar eventos de navegación con fade out
-    document.querySelectorAll('.nav-button').forEach(button => {
-        if (button.classList.contains('next-button') || 
-            button.classList.contains('prev-button')) {
+
+    // Configurar eventos solo para botones de navegación
+    document.querySelectorAll('.prev-button, .next-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetUrl = this.href;
             
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetUrl = this.href;
-                
-                fadeOutAudio(audio, () => {
-                    window.location.href = targetUrl;
-                });
+            // Aplicar fade out solo para navegación manual
+            fadeOutAudio(audio, () => {
+                window.location.href = targetUrl;
             });
-        }
+        });
     });
 
-    // Configurar autoplay y eventos
+    // Configurar autoplay
     const playPromise = audio.play();
     
     if (playPromise !== undefined) {
@@ -68,7 +61,7 @@ function initAudioPlayer() {
         });
     }
     
-    // Configurar evento de finalización con fade out
+    // Evento ended SIN FADE para auto-next
     audio.addEventListener('ended', function() {
         const playerContainer = document.querySelector('.audio-player-container');
         playerContainer.classList.add('ended');
@@ -77,13 +70,11 @@ function initAudioPlayer() {
             playerContainer.classList.remove('ended');
             
             if (isLastAudio && window.autoNextEnabled) {
-                fadeOutAudio(audio, () => {
-                    window.location.href = 'play.php?id=' + nextButton.dataset.firstAudioId;
-                });
+                // Transición inmediata sin fade
+                window.location.href = 'play.php?id=' + nextButton.dataset.firstAudioId;
             } else if (nextButton && window.autoNextEnabled) {
-                fadeOutAudio(audio, () => {
-                    window.location.href = nextButton.href;
-                });
+                // Transición inmediata sin fade
+                window.location.href = nextButton.href;
             }
         }, 500);
     });
@@ -92,5 +83,4 @@ function initAudioPlayer() {
     audio.volume = 1.0;
 }
 
-// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', initAudioPlayer);
