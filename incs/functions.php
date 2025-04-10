@@ -23,7 +23,7 @@ function getAudioFiles($dirMEDIA = 'media') {
         
         $files[] = [
             'filename' => $filename,
-            'display_name' => sprintf("%s %s.mp3", $order, ucfirst($title)),
+            'display_name' => sprintf("%s %s", $order, ucfirst($title)),
             'id' => sprintf("%s_v%s", $order, $version),
             'order' => $order,
             'version' => $version,
